@@ -30,9 +30,9 @@ OctoFit Tracker is a three-tier application for a school fitness program. The st
 
 Record your plan here before editing code.
 
-- Presentation tier decision:
-- Logic tier decision:
-- Data tier decision:
+- Presentation tier decision: Start with /activities (loading, error alert, empty state, data), then reuse the same pattern for /teams, /leaderboard, and /workouts. Do the workouts request last, since it depends on the suggestions API.
+- Logic tier decision: Start with POST /api/activities (return a 4xx instead of 501, validate IDs, compute points and occurredAt). Then teams, then the leaderboard sum and ranking, then workout suggestions (focus and reason, 404 for unknown emails).
+- Data tier decision: Add required-field validators to the four models. These four tests need no server or UI changes, and the logic and presentation tiers depend on the models.
 - Activity tracking approach:
 - Team management approach:
 - Leaderboard approach:
